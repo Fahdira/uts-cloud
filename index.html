@@ -1,68 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S3 Image Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- AWS SDK v3 -->
+  <script src="https://unpkg.com/@aws-sdk/lib-storage@3.465.0/dist/aws-lib-storage.min.js"></script>
+  <script src="https://unpkg.com/@aws-sdk/client-s3@3.465.0/dist/aws-client-s3.min.js"></script>
 </head>
 <body>
-    <!-- Hero Banner -->
-    <section class="hero-banner">
-        <div class="hero-content">
-            <h1 class="hero-title">Image Gallery</h1>
-            <p class="hero-subtitle">Upload and showcase your images with our modern gallery</p>
-        </div>
-    </section>
+  <div class="container">
+    <h1>My S3 Image Gallery</h1>
+    <div id="gallery">Loading...</div>
+  </div>
 
-    <!-- Upload Section -->
-    <section class="upload-section">
-        <h2 class="section-title">Upload Your Image</h2>
-        <div class="upload-container">
-            <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
-                <input type="file" id="file-input" class="file-input" name="image" required>
-                <label for="file-input" class="file-label">
-                    <p>Drag & drop your image here or click to browse</p>
-                    <p><small>Supports: JPG, PNG, GIF (Max 5MB)</small></p>
-                </label>
-                <button type="submit" class="upload-btn">Upload Image</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery-section">
-        <h2 class="section-title">Our Gallery</h2>
-        <div class="gallery-grid">
-            <!-- Example card - these would be dynamically generated from your S3 bucket -->
-            <div class="gallery-card">
-                <img src="https://your-s3-bucket-url.com/image1.jpg" alt="Sample Image" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Beautiful Landscape</h3>
-                    <p class="card-meta">Uploaded: June 12, 2023</p>
-                </div>
-            </div>
-            
-            <div class="gallery-card">
-                <img src="https://your-s3-bucket-url.com/image2.jpg" alt="Sample Image" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">City Skyline</h3>
-                    <p class="card-meta">Uploaded: June 10, 2023</p>
-                </div>
-            </div>
-            
-            <!-- More cards would be generated here from your S3 data -->
-        </div>
-    </section>
-
-    <script>
-        // Simple JavaScript to show filename when selected
-        document.getElementById('file-input').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || 'No file selected';
-            const label = document.querySelector('.file-label');
-            label.innerHTML = `<p>Selected: <strong>${fileName}</strong></p>`;
-        });
-    </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
